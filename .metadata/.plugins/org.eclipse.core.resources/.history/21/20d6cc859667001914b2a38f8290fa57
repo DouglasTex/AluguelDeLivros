@@ -1,0 +1,76 @@
+package com.talentos.aluguel.controller;
+
+import java.util.List;
+import java.util.Optional;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.server.ResponseStatusException;
+
+import com.talentos.aluguel.model.Cliente;
+import com.talentos.aluguel.model.Livro;
+import com.talentos.aluguel.repository.ClienteRepository;
+
+@RequestMapping("/clientes")
+public class ClienteController {
+	
+	@Autowired
+	private ClienteRepository clientes;
+	
+	@GetMapping
+	public List<Cliente> listarClientes(){
+		return clientes.findAll();
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<Cliente> buscar(@PathVariable Long id) {
+		Optional<Cliente> cliente = clientes.findById(id);
+		if (clientes.equals(null)) { 
+			// Em caso de ser nulo o sistema retorna um erro 404 ao invés de null
+			return ResponseEntity.notFound().build();
+		}
+		return ResponseEntity.ok(cliente.get());
+	}
+	
+	@PostMapping
+	@ResponseStatus(HttpStatus.CREATED)
+	public Cliente adicionar (@Valid @RequestBody Cliente cliente) {
+		Optional<Cliente> clienteDuplicado = clientes.findByNome(cliente.getNome());
+		if(clienteDuplicado.isPresent()) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Cliente já cadastrado");
+		}
+		
+		return clientes.save(cliente);
+	}
+	
+	@PostMapping
+	@ResponseStatus(HttpStatus.FOUND)
+	public void remover (Long id) {
+		Optional<Cliente> cliente = clientes.findById(id);
+		if (!cliente.isPresent()) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Cliente não encontrado");
+		}
+		clientes.deleteById(id);
+	}
+	
+	@PostMapping
+	@ResponseStatus(HttpStatus.FOUND)
+	public void editar (Long id, String nome) {
+		Optional<Cliente> cliente = clientes.findById(id);
+		if (!cliente.isPresent()) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Cliente não encontrado");
+		}
+		cliente.get().setTitulo(nome);
+		
+	}
+
+}

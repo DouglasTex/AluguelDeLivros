@@ -1,0 +1,38 @@
+package com.talentos.aluguel.controller;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import com.talentos.aluguel.model.Cliente;
+import com.talentos.aluguel.model.Livro;
+import com.talentos.aluguel.repository.ClienteRepository;
+
+@RequestMapping("/clientes")
+public class ClienteController {
+	
+	@Autowired
+	private ClienteRepository clientes;
+	
+	@GetMapping
+	public List<Cliente> listarClientes(){
+		return clientes.findAll();
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<Cliente> buscar(@PathVariable Long id) {
+		Optional<Cliente> cliente = clientes.findById(id);
+		if (clientes.equals(null)) { 
+			// Em caso de ser nulo o sistema retorna um erro 404 ao invés de null
+			return ResponseEntity.notFound().build();
+		}
+		
+		return ResponseEntity.ok(livro.get());
+	
+	}
+
+}

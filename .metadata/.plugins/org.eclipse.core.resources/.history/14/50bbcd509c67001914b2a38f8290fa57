@@ -1,0 +1,76 @@
+package com.talentos.aluguel.controller;
+
+import java.sql.Date;
+import java.util.List;
+import java.util.Optional;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.server.ResponseStatusException;
+
+import com.talentos.aluguel.model.Aluguel;
+import com.talentos.aluguel.model.Cliente;
+import com.talentos.aluguel.repository.AluguelRepository;
+
+@RequestMapping("/alugueis")
+public class AluguelController {
+	
+	@Autowired
+	private AluguelRepository alugueis;
+	
+	@GetMapping
+	public List<Aluguel> listarAlugueis() {
+		return alugueis.findAll();
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<Aluguel> buscar(@PathVariable Long id) {
+		Optional<Aluguel> aluguel= alugueis.findById(id);
+		if (alugueis.equals(null)) { 
+			// Em caso de ser nulo o sistema retorna um erro 404 ao invés de null
+			return ResponseEntity.notFound().build();
+		}
+		return ResponseEntity.ok(aluguel.get());
+	}
+
+	@PostMapping
+	@ResponseStatus(HttpStatus.CREATED)
+	public Aluguel adicionar (@Valid @RequestBody Aluguel aluguel) {
+		Optional<Aluguel> aluguelDuplicado = alugueis.findByClienteAndLivro(aluguel.getIdCliente(), aluguel.getIdLivro());
+		if(aluguelDuplicado.isPresent()) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Aluguel já cadastrado");
+		}
+		return alugueis.save(aluguel);
+	}
+	
+	@PostMapping
+	@ResponseStatus(HttpStatus.FOUND)
+	public void remover (Long id) {
+		Optional<Aluguel> aluguel = alugueis.findById(id);
+		if (!aluguel.isPresent()) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Aluguel não encontrado");
+		}
+		alugueis.deleteById(id);
+	}
+	
+	@PostMapping
+	@ResponseStatus(HttpStatus.FOUND)
+	public void editar (Long id, Date datadeAluguel) {
+		Optional<Cliente> cliente = clientes.findById(id);
+		if (!cliente.isPresent()) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Cliente não encontrado");
+		}
+		cliente.get().setNome(nome);
+		
+	}
+	
+}

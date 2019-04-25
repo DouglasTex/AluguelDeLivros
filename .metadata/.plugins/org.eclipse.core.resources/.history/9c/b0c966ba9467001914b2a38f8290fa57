@@ -1,0 +1,8 @@
+package com.talentos.aluguel.controller;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@RequestMapping("/clientes")
+public class ClienteController {
+
+}

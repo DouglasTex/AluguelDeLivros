@@ -1,0 +1,15 @@
+package com.talentos.aluguel.repository;
+
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.talentos.aluguel.model.Livro;
+import com.talentos.aluguel.model.Reserva;
+
+
+public interface ReservaRepository extends JpaRepository<Reserva, Long> {
+	
+	Optional<Livro> findByClienteAndLivro(Long idCliente, Long idLivro);
+
+}

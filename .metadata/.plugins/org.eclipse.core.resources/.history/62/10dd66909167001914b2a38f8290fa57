@@ -1,0 +1,35 @@
+package com.talentos.aluguel.model;
+
+import java.sql.Date;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
+public class Aluguel {
+
+	@Id
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	private long id;
+	@NotEmpty
+	@Column
+	private long idCliente;
+	@NotEmpty
+	@Column
+	private long idLivro;
+	@NotEmpty
+	@Column
+	@Temporal(TemporalType.DATE) //yyy-mm-dd
+	private Date datadeAluguel;
+	
+	@NotEmpty
+	@Size(max=80)
+	@Column
+	private String nome;
+	
+}

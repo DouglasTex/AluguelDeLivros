@@ -1,0 +1,10 @@
+package com.talentos.aluguel.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.talentos.aluguel.model.Reserva;
+
+
+public interface ReservaRepository extends JpaRepository<Reserva, Long> {
+
+}

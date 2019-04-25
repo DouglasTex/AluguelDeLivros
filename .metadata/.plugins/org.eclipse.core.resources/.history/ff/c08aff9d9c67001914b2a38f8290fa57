@@ -1,0 +1,51 @@
+package com.talentos.aluguel.model;
+
+import java.sql.Date;
+import javax.persistence.Column;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotEmpty;
+
+public class Aluguel extends Locacao{
+	
+	@NotEmpty
+	@Column
+	@Temporal(TemporalType.DATE) //yyy-mm-dd
+	private Date datadeAluguel;
+
+	public Date getDatadeAluguel() {
+		return datadeAluguel;
+	}
+
+	public void setDatadeAluguel(Date datadeAluguel) {
+		this.datadeAluguel = datadeAluguel;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((datadeAluguel == null) ? 0 : datadeAluguel.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Aluguel other = (Aluguel) obj;
+		if (datadeAluguel == null) {
+			if (other.datadeAluguel != null)
+				return false;
+		} else if (!datadeAluguel.equals(other.datadeAluguel))
+			return false;
+		return true;
+	}
+	
+	
+
+}

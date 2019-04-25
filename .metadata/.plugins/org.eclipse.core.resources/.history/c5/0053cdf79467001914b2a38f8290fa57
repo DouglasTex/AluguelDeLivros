@@ -1,0 +1,9 @@
+package com.talentos.aluguel.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.talentos.aluguel.model.Livro;
+
+public interface ClienteRepository JpaRepository<Cliente, Long>{
+
+}

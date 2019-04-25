@@ -1,0 +1,11 @@
+1556132412556	Delete element
+1556136671071	Delete element
+1556140806171	Delete element
+1556140824708	Delete element
+1556201071362	Delete element
+1556221375620	Rename type 'Aluguel'
+1556221717293	Encapsulate field 'datadeAluguel'
+1556225815892	Encapsulate field 'idCliente'
+1556225835922	Encapsulate field 'idLivro'
+1556226960409	Encapsulate field 'dataDevolucao'
+1556230883195	Encapsulate field 'valor'

@@ -1,0 +1,21 @@
+package com.talentos.aluguel.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import com.talentos.aluguel.model.Livro;
+import com.talentos.aluguel.repository.LivroRepository;
+
+public class AluguelController {
+	
+	@Autowired
+	private LivroRepository livros;
+	
+	@GetMapping
+	public List<Livro> listarLivros() {
+		return livros.findAll();
+	}
+
+}

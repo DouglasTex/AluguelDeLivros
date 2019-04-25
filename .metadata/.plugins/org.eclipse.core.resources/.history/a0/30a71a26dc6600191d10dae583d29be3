@@ -1,0 +1,6 @@
+create table Livro (
+	id BIGINT auto_increment not null,
+	Titulo VARCHAR(30) not null,
+	
+	primary key (id)
+);

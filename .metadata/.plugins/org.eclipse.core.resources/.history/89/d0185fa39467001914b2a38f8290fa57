@@ -1,0 +1,5 @@
+package com.talentos.aluguel.controller;
+
+public class ClienteController {
+
+}

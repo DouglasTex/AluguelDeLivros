@@ -1,0 +1,75 @@
+package com.talentos.aluguel.model;
+
+import java.sql.Date;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotEmpty;
+
+public class Aluguel {
+
+	@Id
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	private long id;
+	@NotEmpty
+	@Column
+	private long idCliente;
+	@NotEmpty
+	@Column
+	private long idLivro;
+	@NotEmpty
+	@Column
+	@Temporal(TemporalType.DATE) //yyy-mm-dd
+	private Date datadeAluguel;
+	
+	public Date getDatadeAluguel() {
+		return datadeAluguel;
+	}
+	public void setDatadeAluguel(Date datadeAluguel) {
+		this.datadeAluguel = datadeAluguel;
+	}
+	public long getId() {
+		return id;
+	}
+	public long getIdCliente() {
+		return idCliente;
+	}
+	public long getIdLivro() {
+		return idLivro;
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((datadeAluguel == null) ? 0 : datadeAluguel.hashCode());
+		result = prime * result + (int) (idCliente ^ (idCliente >>> 32));
+		result = prime * result + (int) (idLivro ^ (idLivro >>> 32));
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Locacao other = (Locacao) obj;
+		if (datadeAluguel == null) {
+			if (other.datadeAluguel != null)
+				return false;
+		} else if (!datadeAluguel.equals(other.datadeAluguel))
+			return false;
+		if (idCliente != other.idCliente)
+			return false;
+		if (idLivro != other.idLivro)
+			return false;
+		return true;
+	}
+	
+	
+	
+}

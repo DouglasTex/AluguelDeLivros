@@ -1,0 +1,19 @@
+package com.talentos.aluguel.model;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
+
+public class Cliente {
+	
+	@Id
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	private long id;
+	@NotEmpty
+	@Column
+	private String nome;
+	
+
+}

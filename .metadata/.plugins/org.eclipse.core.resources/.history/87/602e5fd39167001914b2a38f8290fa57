@@ -1,0 +1,9 @@
+package com.talentos.aluguel.model;
+
+
+
+public class Reserva extends Aluguel {
+	
+	
+
+}

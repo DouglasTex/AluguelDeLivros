@@ -1,0 +1,10 @@
+spring.jpa.hibernate.ddl-auto=update
+spring.datasource.url=jdbc:mysql://localhost:8080/alugueldb?createDatabaseIfNotExist=true&useTimezone=true&serverTimezone=UTC
+##&useTimezone=true&serverTimezone=UTC
+##Bote aqui o username e a senha do seu mysql.
+spring.datasource.username=root
+spring.datasource.password=
+##spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.jpa.database=MYSQL
+spring.datasource.platform=mysql
+spring.jpa.show-sql=true

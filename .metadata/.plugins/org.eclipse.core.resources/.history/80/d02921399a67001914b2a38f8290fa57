@@ -1,0 +1,11 @@
+package com.talentos.aluguel.repository;
+
+import java.util.Optional;
+
+import com.talentos.aluguel.model.Aluguel;
+
+public interface AluguelRepository {
+	
+	Optional<Aluguel> findByClienteAndLivro(Long idCliente, Long idLivro);
+
+}

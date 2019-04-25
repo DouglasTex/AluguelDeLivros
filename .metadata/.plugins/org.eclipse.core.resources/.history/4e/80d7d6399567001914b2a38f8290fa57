@@ -1,0 +1,14 @@
+package com.talentos.aluguel.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.talentos.aluguel.repository.ClienteRepository;
+
+@RequestMapping("/clientes")
+public class ClienteController {
+	
+	@Autowired
+	private ClienteRepository clientes;
+
+}

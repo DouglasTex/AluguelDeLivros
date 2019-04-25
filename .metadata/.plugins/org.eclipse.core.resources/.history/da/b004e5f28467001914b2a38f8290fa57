@@ -1,0 +1,57 @@
+package com.talentos.aluguel.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import com.talentos.aluguel.model.Livro;
+import com.talentos.aluguel.repository.LivroRepository;
+
+/*
+ * GET http://localhost:8080/livros
+ */
+
+@RequestMapping("/livros")
+public class Livroscontroller  {
+	
+	@Autowired
+	private LivroRepository livros;
+	
+	@GetMapping
+	public List<Livro> listarLivros() {
+		return livros.findAll();
+	}
+
+	public Optional Livro buscar(Long id) {
+		return livros.findById(id);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}
+

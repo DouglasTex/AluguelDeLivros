@@ -1,0 +1,19 @@
+package com.talentos.aluguel.model;
+
+import java.sql.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotEmpty;
+
+public class Reserva extends Locacao {
+	
+	@NotEmpty
+	@Column
+	@Temporal(TemporalType.DATE) //yyy-mm-dd
+	private Date datadeReserva;
+	
+	
+
+}
