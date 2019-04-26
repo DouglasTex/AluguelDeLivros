@@ -3,7 +3,9 @@ package com.talentos.aluguel.controller;
 import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
+
 import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,8 +41,11 @@ public class ReversaController {
 	}
 	
 	@GetMapping("/reservasRecentes")
-	public Optional<Reserva> listarReservasDaSemana(Date startDate, Date todayDate) {
-		return reservas.findByStartDateBetween(startDate, todayDate);
+	public Optional<Reserva> listarReservasDaSemana() {
+		
+		// not implemented
+		
+		return null;
 	}
 	
 	@PostMapping

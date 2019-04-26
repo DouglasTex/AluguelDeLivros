@@ -30,6 +30,7 @@ public class Locacao {
 	@Column
 	@Temporal(TemporalType.DATE) //yyy-mm-dd
 	private Date dataDevolucao;
+	
 	@NotEmpty
 	@Column
 	private int valor;

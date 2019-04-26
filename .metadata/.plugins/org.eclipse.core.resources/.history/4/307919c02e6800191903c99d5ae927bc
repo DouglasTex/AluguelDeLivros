@@ -30,11 +30,6 @@ public class AluguelController {
 		return alugueis.findAll();
 	}
 	
-	@GetMapping("/alugueisRecentes")
-	public Optional<Aluguel> listarReservasDaSemana(Date startDate, Date todayDate) {
-		return alugueis.findByStartDateBetween(startDate, todayDate);
-	}
-	
 	@GetMapping("/{id}")
 	public ResponseEntity<Aluguel> buscar(@PathVariable Long id) {
 		Optional<Aluguel> aluguel= alugueis.findById(id);
