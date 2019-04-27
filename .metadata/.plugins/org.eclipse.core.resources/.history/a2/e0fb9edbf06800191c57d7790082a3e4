@@ -41,7 +41,7 @@ public class ReversaController {
 	/*
 	 * A melhor maneira de se fazer esse método seria ele não recebendo nenhum parâmetro
 	 * E pegando do próprio sistema a data atual e calculando a data de 7 dias atrás
-	 * para fazer a pesquisa entre esse intervalo de tempo, mas não consegui descobrir como fazer a tempo
+	 * para fazer a pesquisa entre esse intervalo de tempo, mas não consegui descobrir como fazer
 	 */
 	@GetMapping("/reservasRecentes")
 	public Optional<Reserva> listarReservasDaSemana(Date startDate, Date todayDate) {

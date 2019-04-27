@@ -28,11 +28,6 @@ public class AluguelController {
 		return alugueis.findAll();
 	}
 	
-	/*
-	 * A melhor maneira de se fazer esse método seria ele não recebendo nenhum parâmetro
-	 * E pegando do próprio sistema a data atual e calculando a data de 7 dias atrás
-	 * para fazer a pesquisa entre esse intervalo de tempo, mas não consegui descobrir como fazer a tempo
-	 */
 	@GetMapping("/alugueisRecentes")
 	public Optional<Aluguel> listarReservasDaSemana(Date startDate, Date todayDate) {
 		return alugueis.findByStartDateBetween(startDate, todayDate);
@@ -56,13 +51,6 @@ public class AluguelController {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Aluguel já cadastrado");
 		}
 		return alugueis.save(aluguel);
-	}
-	
-	@PostMapping
-	@ResponseStatus(HttpStatus.FOUND)
-	public void devolver (Long id, Date data) {
-		alugueis.findById(id).get().setDataDevolucao(data);
-		
 	}
 	
 	@PostMapping

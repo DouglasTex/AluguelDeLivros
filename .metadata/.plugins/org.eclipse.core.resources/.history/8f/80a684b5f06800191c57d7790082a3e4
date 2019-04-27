@@ -26,12 +26,6 @@ public class Locacao {
 	@NotEmpty
 	@Column
 	private long idLivro;
-	/*
-	 * dataDevolucao vai servir para duas coisas: A primeira seria justamente mostrar a data em que o 
-	 * livro foi devolvido. A segunda seria quando ela estaria NULL, pois quando tiver assim
-	 * Nós saberemos que o livro ainda não foi devolvido, o que descarta a necessidade de criar
-	 * um atributo booleano só para isso, precisando simplesmente verificar se esse atributo está ou não NULL
-	 */
 	@NotEmpty
 	@Column
 	@Temporal(TemporalType.DATE) //yyy-mm-dd

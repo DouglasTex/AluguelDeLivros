@@ -29,10 +29,8 @@
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.Mapping"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
 <fullyQualifiedTypeName name="javax.validation.constraints.Size"/>
-<fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="java.sql.Date"/>
 <fullyQualifiedTypeName name="javax.persistence.Temporal"/>
-<fullyQualifiedTypeName name="javax.persistence.TemporalType"/>
 <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
 <fullyQualifiedTypeName name="com.talentos.aluguel.repository.ClienteRepository"/>
 <fullyQualifiedTypeName name="java.util.List"/>
@@ -45,4 +43,9 @@
 <fullyQualifiedTypeName name="javax.persistence.Column"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
 <fullyQualifiedTypeName name="java.util.Optional"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="org.springframework.data.jpa.repository.Temporal"/>
+<fullyQualifiedTypeName name="javax.persistence.TemporalType"/>
 </qualifiedTypeNameHistroy>
